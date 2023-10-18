@@ -6,7 +6,7 @@ output_file="/var/log/system_health_report.txt"
 # Get the current date and time
 date_time=$(date '+%Y-%m-%d %H:%M:%S')
 
-# Function to collect system information and append it to the report
+# Function to collect system information and add it to the outputfile
 collect_info() {
     echo "System Health Report: $date_time" > "$output_file"
     echo "--------------------------------------" >> "$output_file"
@@ -34,5 +34,5 @@ collect_info() {
 collect_info
 
 # Print a confirmation message
-echo "System health information has been collected and saved to $output_file."
+echo "System health information can be vied in the $output_file."
 
