@@ -36,3 +36,5 @@ collect_info
 # Print a confirmation message
 echo "System health information can be vied in the $output_file."
 
+#Print the outputfile
+cat /var/log/system_health_report.txt
