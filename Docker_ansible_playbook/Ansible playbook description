@@ -1,0 +1,1 @@
+an idempotent Ansible playbook that automates the installation and configuration of Docker on a Debian host, ensuring it correctly handles repeated executions without unnecessary changes to the system state
