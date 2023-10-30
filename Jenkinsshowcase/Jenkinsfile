@@ -1,0 +1,59 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build and Push Docker Image') {
+            steps {
+                script {
+                    def dockerImage = docker.build('docker-image-name') //replace 'docker-image-name' with the docker image name you want
+                    dockerImage.push()
+                }
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh 'kubectl apply -f your-k8s-manifests/' //adjust the path to your Kubernetes manifests 
+            }
+        }
+
+        stage('Archive Artifacts') {
+            steps {
+                archiveArtifacts artifacts: '**/*', allowEmptyArchive: true
+            }
+        }
+
+        stage('Push to Git Repository') {
+            steps {
+                script {
+                    sh 'git config --global user.email "you@example.com"'
+                    sh 'git config --global user.name "Your Name"'
+                    sh 'git init'
+                    sh 'git add .'
+                    sh 'git commit -m "Jenkins job artifacts"'
+                    sh 'git remote add origin your-git-repo-url'
+                    sh 'git push --force origin master'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            deleteDir() // Clean up workspace
+        }
+    }
+}
+
+// This Jenkinsfile performs the following steps:
+// Checks out the code from the Git repository.
+// Builds and pushes a Docker image.
+// Deploys the application to a Kubernetes cluster.
+// Archives all artifacts (including Docker image and Kubernetes manifests).
+// Initializes a Git repository, commits artifacts, and pushes them to another Git repository.
