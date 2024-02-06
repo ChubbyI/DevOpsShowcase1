@@ -3,7 +3,7 @@ resource "aws_key_pair" "example-key: {
     public_key = file("examplekey.pub")
 }
 
-resource "aws_instance" dove-inst" {
+resource "aws_instance" "test-inst" {
     ami = var.AMIS[var.REGION]
     instance_type = "t2.micro"
     availability_zone = var.ZONE1
@@ -32,4 +32,12 @@ resource "aws_instance" dove-inst" {
         private_key = file("exampleprivatekey)
         host = self.public_ip
     }
+}
+
+output "PublicIP" {
+    value = aws_instance.test-inst.public_ip
+}
+
+output "PrivateIP" {
+    value = aws_instance.test-inst.private_ip
 }
