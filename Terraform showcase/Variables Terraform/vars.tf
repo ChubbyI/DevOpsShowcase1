@@ -8,7 +8,7 @@ variable ZONE1 {
 
 variable AMIS {
     type = map
-    defailt{
+    defailt = {
         us-east-2 = "ami-03657b56516ab7912"
         us-east-1 = "ami-03657b56516ab7912"
     }
