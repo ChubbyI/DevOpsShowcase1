@@ -1,0 +1,14 @@
+# BASE IMAGE (STAGE 1)
+FROM ubuntu:latest as stage1
+
+RUN apt-get update
+RUN apt-get -y install make curl
+RUN curl http://abc.com/xyz.tar.gz -0
+RUN tar zxf xyz.tar.gz && cd xyz
+RUN make DESTDIR=/tmp install
+
+# STAGE 2
+FROM alpine:3.10
+
+COPY --from=stage1 /tmp /xyz
+ENTRYPOINT [ "/xyz/app" ]
