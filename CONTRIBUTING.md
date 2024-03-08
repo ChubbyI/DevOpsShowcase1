@@ -1,4 +1,4 @@
-This is mostly a personal project and as such some code might not be working at the time you run it as it is still being developed. I start things and tend to not finish at times. Also some code is written in a way you have to enter ypur own variables in order for it to run (mainly th eterraform scripts).
+This is mostly a personal project and as such some code might not be working at the time you run it as it is still being developed. I start things and tend to not finish at times. Also some code is written in a way you have to enter ypur own variables in order for it to run (mainly thr terraform files).
 
 However, 
 I will still  love your input! I want to make contributing to this project as easy and transparent as possible, whether it's:
